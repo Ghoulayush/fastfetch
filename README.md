@@ -138,10 +138,6 @@ fastfetch --config "%APPDATA%\fastfetch\config.jsonc"
 
 After setting up the alias, simply run `ff` to display your custom fastfetch configuration.
 
-## OS Age
-
-By default it shows age in days. Alternatively, you can use `"{?years}{years} years and {?}{days-of-year} days"` to show age in years
-
 ## Schema Validation
 
 This configuration uses the official fastfetch JSON schema for validation and auto-completion in supported editors.
