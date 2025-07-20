@@ -138,15 +138,9 @@ fastfetch --config "%APPDATA%\fastfetch\config.jsonc"
 
 After setting up the alias, simply run `ff` to display your custom fastfetch configuration.
 
-## OS Age Calculation
+## OS Age
 
-The configuration includes a custom command that calculates how long your OS has been installed:
-
-```bash
-birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days
-```
-
-This works on Linux systems by checking the creation time of the root directory.
+By default it shows age in days. Alternatively, you can use `"{?years}{years} years and {?}{days-of-year} days"` to show age in years
 
 ## Schema Validation
 
