@@ -1,25 +1,22 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "display": {
-    "separator": " : "
+    "separator": " : ",
+    "fraction": {
+        "ndigits": 2
+    }
   },
   "modules": [
     {
       "type": "custom",
       "format": "  \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
     },
-    {
-      "type": "custom",
-      "format": ""
-    },
+    "break",
     {
       "type": "custom",
       "format": "     What good to foresee a demise unavoidable  "
     },
-    {
-      "type": "custom",
-      "format": ""
-    },
+    "break",
     {
       "type": "os",
       "key": "   OS",
@@ -57,15 +54,30 @@
     },
 
     {
-      "type": "command",
+      "type": "disk",
+      "condition": {
+        "!system": "macOS"
+      },
       "key": "  󱦟 OS Age ",
+      "folders": "/",
       "keyColor": "cyan",
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+      "format": "{years-fraction} years"
+    },
+
+    {
+      "type": "disk",
+      "condition": {
+        "system": "macOS"
+      },
+      "key": "  󱦟 OS Age ",
+      "folders": "/System/Volumes/VM", // A workaround for APFS volumes
+      "keyColor": "cyan",
+      "text": "{years-fraction} years"
     },
 
     {
       "type": "uptime",
-      "key": "  ",
+      "key": "    Uptime",
       "keyColor": "blue"
     },
     {
@@ -84,25 +96,22 @@
       "key": "   User",
       "keyColor": "black"
     },
-    {
-      "type": "custom",
-      "format": ""
-    },
+    "break",
     {
       "type": "cpu",
-      "format": "{1}",
+      "format": "{name}",
       "key": "   CPU",
       "keyColor": "green"
     },
     {
       "type": "gpu",
-      "format": "{2}",
+      "format": "{name}",
       "key": "   GPU",
       "keyColor": "yellow"
     },
     {
       "type": "gpu",
-      "format": "{3}",
+      "format": "{vendor} {driver}",
       "key": "   GPU Driver",
       "keyColor": "cyan"
     },
@@ -111,14 +120,11 @@
       "key": "   Memory",
       "keyColor": "magenta"
     },
-    {
-      "type": "custom",
-      "format": ""
-    },
+    "break",
     "break",
     {
       "type": "custom",
-      "format": "  \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+      "format": "  {#light_black}  {#red}m  {#green}  {#yellow}  {#blue}  {#magenta}  {#cyan}  {#white}"
     },
     "break"
   ]
